@@ -13,7 +13,7 @@ function GameGrid({ onGuess, restartKey }) {
 
   useEffect(() => {
     // Fetch matrices from backend API
-    axios.get('http://localhost:8080/grid')
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/grid`)
       .then((response) => {
         setMatrix1(response.data.matrix1); // Integer matrix
         setMatrix2(response.data.matrix2); // Double matrix
