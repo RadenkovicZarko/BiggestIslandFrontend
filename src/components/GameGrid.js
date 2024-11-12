@@ -6,84 +6,61 @@ function GameGrid({ onGuess, restartKey }) {
   const [matrix1, setMatrix1] = useState([]);
   const [matrix2, setMatrix2] = useState([]);
   const [maxValue, setMaxValue] = useState(1000);
-  const [message, setMessage] = useState('');
   const [highlightedCells, setHighlightedCells] = useState(new Set());
-  
-
 
   useEffect(() => {
-    // Fetch matrices from backend API
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/grid`)
       .then((response) => {
-        setMatrix1(response.data.matrix1); // Integer matrix
-        setMatrix2(response.data.matrix2); // Double matrix
-        setMaxValue(response.data.max); // Set max value for normalization
+        setMatrix1(response.data.matrix1);
+        setMatrix2(response.data.matrix2);
+        setMaxValue(response.data.max);
       })
       .catch((error) => console.error('Error fetching matrix data:', error));
 
-      setMessage('');
     setHighlightedCells(new Set());
   }, [restartKey]);
 
-
- 
-  
-  const getColorForValue = (value, rowIndex, colIndex) => {
-
-    if (value === 0) return 'water-cell'; // Water (0)
+  const getColorForValue = (value) => {
+    if (value === 0) return 'water-cell';
   
     const normalizedValue = value / 1000;
   
     if (normalizedValue <= 0.1) {
-      // Very bright green for values 1-100
       return `rgb(144, 238, 144)`;
     } else if (normalizedValue <= 0.3) {
-      // Transition from bright green to darker green (101-300)
-      const green = 238 - Math.floor((normalizedValue - 0.1) * 5 * 89); // Green from 238 to 150
+      const green = 238 - Math.floor((normalizedValue - 0.1) * 5 * 89);
       return `rgb(34, ${green}, 34)`;
     } else if (normalizedValue <= 0.5) {
-      // Transition from dark green to bright yellow (301-500)
-      const red = 255;
-      const green = Math.floor(150 + (normalizedValue - 0.3) * 5 * 105); // Green from 150 to 255
-      return `rgb(${red}, ${green}, 0)`;
+      const green = Math.floor(150 + (normalizedValue - 0.3) * 5 * 105);
+      return `rgb(255, ${green}, 0)`;
     } else if (normalizedValue <= 0.7) {
-      // Transition from bright yellow to yellow (501-700)
-      const green = 255 - Math.floor((normalizedValue - 0.5) * 5 * 51); // Green from 255 to 204
+      const green = 255 - Math.floor((normalizedValue - 0.5) * 5 * 51);
       return `rgb(255, ${green}, 0)`;
     } else if (normalizedValue <= 0.8) {
-      // Transition from yellow to bright brown (701-800)
-      const red = 255 - Math.floor((normalizedValue - 0.7) * 10 * 105); // Red from 255 to 150
-      const green = 204 - Math.floor((normalizedValue - 0.7) * 10 * 102); // Green from 204 to 102
+      const red = 255 - Math.floor((normalizedValue - 0.7) * 10 * 105);
+      const green = 204 - Math.floor((normalizedValue - 0.7) * 10 * 102);
       return `rgb(${red}, ${green}, 34)`;
     } else if (normalizedValue <= 0.9) {
-      // Transition from bright brown to strong brown (801-900)
-      const red = 150 - Math.floor((normalizedValue - 0.8) * 10 * 49); // Red from 150 to 101
-      const green = 102 - Math.floor((normalizedValue - 0.8) * 10 * 53); // Green from 102 to 49
+      const red = 150 - Math.floor((normalizedValue - 0.8) * 10 * 49);
+      const green = 102 - Math.floor((normalizedValue - 0.8) * 10 * 53);
       return `rgb(${red}, ${green}, 34)`;
     } else {
-      // Transition from strong brown to white (901-1000)
-      const intensity = 255 - Math.floor((1 - normalizedValue) * 25); // Gradual transition to strong white
+      const intensity = 255 - Math.floor((1 - normalizedValue) * 25);
       return `rgb(${intensity}, ${intensity}, ${intensity})`;
     }
   };
-  
-  
-  
 
   const handleClick = (rowIndex, colIndex) => {
     const valueInMatrix2 = matrix2[rowIndex][colIndex];
 
     if (valueInMatrix2 === maxValue) {
-      setMessage(`The value at row ${rowIndex + 1}, column ${colIndex + 1} in Matrix 2 is equal to the max value.`);
       setHighlightedCells(new Set());
       onGuess(true);
     } else {
-      setMessage(`The value at row ${rowIndex + 1}, column ${colIndex + 1} in Matrix 2 is not equal to the max value.`);
       highlightIsland(rowIndex, colIndex);
       onGuess(false);
     }
   };
-
 
   const highlightIsland = (startRow, startCol) => {
     const visited = new Set();
@@ -93,28 +70,24 @@ function GameGrid({ onGuess, restartKey }) {
       const [row, col] = stack.pop();
       const key = `${row},${col}`;
 
-      // Skip if already visited or out of bounds or the cell is 0 (water)
       if (visited.has(key) || row < 0 || col < 0 || row >= matrix1.length || col >= matrix1[0].length || matrix1[row][col] === 0) {
         continue;
       }
 
       visited.add(key);
 
-      // Check adjacent cells (up, down, left, right)
       stack.push([row - 1, col]);
       stack.push([row + 1, col]);
       stack.push([row, col - 1]);
       stack.push([row, col + 1]);
-
       stack.push([row + 1, col + 1]);
       stack.push([row + 1, col - 1]);
       stack.push([row - 1, col - 1]);
       stack.push([row - 1, col + 1]);
     }
     
-    setHighlightedCells((prevHighlightedCells) => new Set([...prevHighlightedCells, ...visited]));
-};
-
+    setHighlightedCells((prev) => new Set([...prev, ...visited]));
+  };
 
   const renderMatrix = (matrix, onClickHandler) => (
     <div className="matrix">
@@ -125,7 +98,7 @@ function GameGrid({ onGuess, restartKey }) {
               key={colIndex}
               className={`matrix-cell ${value === 0 ? 'water-cell' : ''}`}
               style={{
-                backgroundColor: getColorForValue(value, rowIndex, colIndex),
+                backgroundColor: getColorForValue(value),
                 position: 'relative',
               }}
               onClick={() => onClickHandler(rowIndex, colIndex)}
@@ -139,7 +112,6 @@ function GameGrid({ onGuess, restartKey }) {
       ))}
     </div>
   );
-
 
   return (
     <div className="game-grid">
