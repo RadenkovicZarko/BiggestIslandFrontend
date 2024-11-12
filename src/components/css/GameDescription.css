@@ -1,26 +1,25 @@
 .game-description {
-    padding: 20px;
+    padding: 2rem;
     border: 1px solid black;
     border-radius: 10px;
     background-color: #ffffff;
-    margin-left: 20px;
     font-family: Arial, sans-serif;
-    line-height: 1.6;
+    line-height: 1.4;
   }
   
   .game-description h2 {
-    font-size: 24px;
+    font-size: 2rem;
     color: #333;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
     text-align: center;
   }
   
   .game-description section {
-    margin-bottom: 15px;
+    margin-bottom: 1.5rem;
   }
   
   .game-description h4 {
-    font-size: 18px;
+    font-size: 1.4rem;
     color: #2a6da1; /* Dark blue for headings */
     display: flex;
     align-items: center;
@@ -28,7 +27,7 @@
   }
   
   .game-description p {
-    margin: 10px 0;
+    margin: 1rem 0;
     color: #555;
   }
   

@@ -1,17 +1,16 @@
 .game-info {
-    padding: 20px;
+    padding: 1%;
     border: 1px solid #333;
-    border-radius: 15px;
+    border-radius: 10px;
     background-color: #fff;
-    margin-right: 20px;
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    margin-right: 1rem;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   .game-info h2 {
-    font-size: 28px;
     color: #2a6da1;
     margin-bottom: 20px;
   }
@@ -30,9 +29,9 @@
   
   /* Lives and stats styling */
   .lives-section, .stats-section {
-    margin-bottom: 20px;
-    padding: 10px;
-    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 10px;
   }
   
   .lives-section {
@@ -48,11 +47,11 @@
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin-top: 5px;
+    margin-top: 0.2rem;
   }
   
   .heart {
-    font-size: 28px;
+    font-size: 1.7rem;
     cursor: pointer;
     transition: transform 0.2s;
   }
@@ -66,7 +65,7 @@
     justify-content: center; /* Center-align items */
     align-items: center;
     gap: 8px;
-    margin-top: 10px;
+    margin-top: 0.5rem;
   }
   
   /* Stat item text and icon styling */
@@ -76,7 +75,7 @@
   }
   
   .icon {
-    font-size: 22px;
+    font-size: 1.5rem;
     color: #ffa726;
   }
   

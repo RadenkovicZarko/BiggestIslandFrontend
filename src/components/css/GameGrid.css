@@ -1,27 +1,21 @@
 
 .game-grid{
-    padding: 20px;
+    padding: 1%;
     border: 1px solid black;
     border-radius: 10px;
     background-color: #ffffff;
-    margin-left: 20px;
+    
     font-family: Arial, sans-serif;
-    line-height: 1.6;
+    line-height: 1.2;
   }
 
-.matrix-container {
-    display: inline-block;
-    padding: 30px; /* Adjust based on matrix size for 10% surrounding water */
-    background-color: blue; /* Match water color */
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); /* Optional: subtle shadow for polish */
-  }
   
   .matrix {
     display: inline-block;
     margin: 0 auto;
   }
   
-  h1 {
+  .game-grid h1 {
     margin-left: 31%;
     padding: 3%;
   }
@@ -30,8 +24,8 @@
   }
   
   .matrix-cell {
-    width: 25px; /* Adjust cell size if needed */
-    height: 25px;
+    width: 2.5vh; /* Adjust cell size if needed */
+    height: 2.5vh;
     display: flex;
     align-items: center;
     justify-content: center;

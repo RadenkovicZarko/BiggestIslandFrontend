@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './css/GameGrid.css';
 
-function App() {
+function GameGrid({ onGuess, restartKey }) {
   const [matrix1, setMatrix1] = useState([]);
   const [matrix2, setMatrix2] = useState([]);
   const [maxValue, setMaxValue] = useState(1000);
   const [message, setMessage] = useState('');
   const [highlightedCells, setHighlightedCells] = useState(new Set());
+  
+
 
   useEffect(() => {
     // Fetch matrices from backend API
@@ -18,10 +20,13 @@ function App() {
         setMaxValue(response.data.max); // Set max value for normalization
       })
       .catch((error) => console.error('Error fetching matrix data:', error));
-  }, []);
+
+      setMessage('');
+    setHighlightedCells(new Set());
+  }, [restartKey]);
 
 
-
+ 
   
   const getColorForValue = (value, rowIndex, colIndex) => {
 
@@ -67,12 +72,15 @@ function App() {
 
   const handleClick = (rowIndex, colIndex) => {
     const valueInMatrix2 = matrix2[rowIndex][colIndex];
+
     if (valueInMatrix2 === maxValue) {
       setMessage(`The value at row ${rowIndex + 1}, column ${colIndex + 1} in Matrix 2 is equal to the max value.`);
       setHighlightedCells(new Set());
+      onGuess(true);
     } else {
       setMessage(`The value at row ${rowIndex + 1}, column ${colIndex + 1} in Matrix 2 is not equal to the max value.`);
       highlightIsland(rowIndex, colIndex);
+      onGuess(false);
     }
   };
 
@@ -97,6 +105,11 @@ function App() {
       stack.push([row + 1, col]);
       stack.push([row, col - 1]);
       stack.push([row, col + 1]);
+
+      stack.push([row + 1, col + 1]);
+      stack.push([row + 1, col - 1]);
+      stack.push([row - 1, col - 1]);
+      stack.push([row - 1, col + 1]);
     }
     
     setHighlightedCells((prevHighlightedCells) => new Set([...prevHighlightedCells, ...visited]));
@@ -113,11 +126,10 @@ function App() {
               className={`matrix-cell ${value === 0 ? 'water-cell' : ''}`}
               style={{
                 backgroundColor: getColorForValue(value, rowIndex, colIndex),
-                position: 'relative', // Allow absolute positioning for overlay
+                position: 'relative',
               }}
               onClick={() => onClickHandler(rowIndex, colIndex)}
             >
-              {/* Add overlay if the cell is part of the highlighted island */}
               {highlightedCells.has(`${rowIndex},${colIndex}`) && (
                 <div className="red-overlay" />
               )}
@@ -137,4 +149,4 @@ function App() {
   );
 }
 
-export default App;
+export default GameGrid;
