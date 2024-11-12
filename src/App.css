@@ -1,38 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap');
+
+
 .App {
   text-align: center;
+  padding: 15px;
+  font-family: 'Baloo 2', cursive;
+  font-size: 22px;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* General Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Game Container Layout */
+body {
+  font-family: Arial, sans-serif;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f4f4;
 }
 
-.App-link {
-  color: #61dafb;
+.game-container {
+  display: flex;
+  align-items: flex-start;
+  padding: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Left Panel: Game Info */
+.game-info {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #ffffff;
+  margin-right: 20px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
+
+.game-info h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.lives {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin: 10px 0;
+}
+
+.heart {
+  font-size: 24px;
+}
+
+.stats p {
+  margin: 10px 0;
+}
+
+/* Center Panel: Game Grid */
+.game-grid {
+ 
+
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #e0e0e0;
+  
+}
+
+.matrix {
+  display: grid;
+  grid-template-columns: repeat(30, 20px);
+  grid-template-rows: repeat(30, 20px);
+  gap: 1px;
+}
+
+.matrix-cell {
+  width: 20px;
+  height: 20px;
+  background-color: #cce5ff; /* Light blue for water */
+}
+
+/* Right Panel: Game Description */
+.game-description {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #ffffff;
+  margin-left: 20px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.game-description h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.game-description p {
+  margin: 10px 0;
+}
+
+
+
+
+

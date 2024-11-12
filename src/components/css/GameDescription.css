@@ -1,0 +1,41 @@
+.game-description {
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #ffffff;
+    margin-left: 20px;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+  
+  .game-description h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .game-description section {
+    margin-bottom: 15px;
+  }
+  
+  .game-description h4 {
+    font-size: 18px;
+    color: #2a6da1; /* Dark blue for headings */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .game-description p {
+    margin: 10px 0;
+    color: #555;
+  }
+  
+  footer {
+    font-weight: bold;
+    font-style: italic;
+    color: #333;
+    text-align: center;
+  }
+  
