@@ -60,7 +60,7 @@ function GameGrid({ onGuess, restartKey }) {
       setHighlightedCells(new Set());
       onGuess(true);
     } 
-    else if(valueInMatrix2==-1)
+    else if(valueInMatrix2===1)
     {
       setPopupMessage('You already selected that island, and it does not have the highest average height among all islands.');
       setShowPopup(true);
