@@ -24,7 +24,7 @@
   }
   
   .matrix-cell {
-    width: 2.5vh; /* Adjust cell size if needed */
+    width: 2.5vh; 
     height: 2.5vh;
     display: flex;
     align-items: center;
@@ -32,7 +32,7 @@
     font-size: 0.8em;
     color: white;
     font-weight: bold;
-    border: 0.1px solid black; /* No borders for seamless look */
+    border: 0.1px solid black;
     padding: 0;
     margin: 0;
     position:relative;
@@ -45,12 +45,12 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(255, 0, 0, 0.6); /* Semi-transparent red overlay */
-    pointer-events: none; /* Allow clicks to pass through to the cell */
+    background-color: rgba(255, 0, 0, 0.6); 
+    pointer-events: none; 
   }
   
   .water-cell {
-    background: linear-gradient(135deg, #0091ff 0%, #0c487c 100%); /* Darker blue gradient */
+    background: linear-gradient(135deg, #0091ff 0%, #0c487c 100%); 
     background-size: cover;
     position: relative;
     overflow: hidden;

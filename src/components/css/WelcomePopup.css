@@ -1,11 +1,11 @@
-/* Pop-up Overlay */
+
 .popup-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.6); /* Dark overlay for focus */
+    background: rgba(0, 0, 0, 0.6); 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,7 +13,6 @@
     animation: fadeIn 0.3s ease-in;
   }
   
-  /* Pop-up Content */
   .popup-content {
     background: #ffffff;
     border-radius: 15px;
@@ -25,7 +24,6 @@
     animation: slideDown 0.4s ease;
   }
   
-  /* Title and Paragraph Styling */
   .popup-content h2 {
     font-size: 26px;
     color: #2a6da1;
@@ -38,7 +36,6 @@
     margin-bottom: 20px;
   }
   
-  /* List Styling */
   .popup-content ul {
     list-style: none;
     padding: 0;
@@ -51,7 +48,6 @@
     margin: 8px 0;
   }
   
-  /* Close Button */
   .close-button {
     padding: 10px 20px;
     font-size: 16px;
@@ -67,7 +63,6 @@
     background-color: #1f4d7a;
   }
   
-  /* Animation for smooth appearance */
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }

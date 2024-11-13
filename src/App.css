@@ -9,14 +9,12 @@
   margin: 0;
 }
 
-/* General Reset */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Game Container Layout */
 body {
   font-family: Arial, sans-serif;
   display: flex;
@@ -32,8 +30,6 @@ body {
   padding: 1%;
 }
 
-
-/* Left Panel: Game Info */
 .game-info {
   flex: 1;
   text-align: center;
@@ -60,7 +56,7 @@ body {
   margin: 10px 0;
 }
 
-/* Center Panel: Game Grid */
+
 .game-grid {
 
   justify-content: center;
@@ -81,10 +77,9 @@ body {
 .matrix-cell {
   width: 10%;
   height: 10%;
-  background-color: #cce5ff; /* Light blue for water */
+  background-color: #cce5ff;
 }
 
-/* Right Panel: Game Description */
 .game-description {
   flex: 1;
   padding: 20px;

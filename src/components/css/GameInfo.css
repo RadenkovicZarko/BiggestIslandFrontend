@@ -15,7 +15,7 @@
     margin-bottom: 20px;
   }
   
-  /* Center the headings */
+ 
   .lives-section h4, .stats-section h4 {
     font-size: 20px;
     color: #d32f2f;
@@ -27,7 +27,7 @@
     text-align: center;
   }
   
-  /* Lives and stats styling */
+
   .lives-section, .stats-section {
     margin-bottom: 1.5rem;
     padding: 0.5rem;
@@ -35,14 +35,13 @@
   }
   
   .lives-section {
-    background-color: #fce4ec; /* Light red background */
+    background-color: #fce4ec; 
   }
   
   .stats-section {
-    background-color: #e3f2fd; /* Light blue background */
+    background-color: #e3f2fd;
   }
-  
-  /* Center the lives and stat-item contents */
+
   .lives {
     display: flex;
     justify-content: center;
@@ -57,18 +56,18 @@
   }
   
   .heart:hover {
-    transform: scale(1.1); /* Slightly larger on hover */
+    transform: scale(1.1);
   }
   
   .stat-item {
     display: flex;
-    justify-content: center; /* Center-align items */
+    justify-content: center;
     align-items: center;
     gap: 8px;
     margin-top: 0.5rem;
   }
   
-  /* Stat item text and icon styling */
+
   .stat-item p {
     margin: 0;
     color: #444;
@@ -80,6 +79,6 @@
   }
   
   .icon:hover {
-    color: #ff6f00; /* Darker color on hover */
+    color: #ff6f00; 
   }
   

@@ -2,10 +2,9 @@ import React, { useEffect } from 'react';
 import './css/ErrorPopup.css';
 
 function ErrorPopup({ message, onClose }) {
-  // Automatically close the popup after 3 seconds
   useEffect(() => {
-    const timer = setTimeout(onClose, 3000); // Close after 3 seconds
-    return () => clearTimeout(timer); // Clear timer if the component unmounts
+    const timer = setTimeout(onClose, 5000);
+    return () => clearTimeout(timer); 
   }, [onClose]);
 
   return (

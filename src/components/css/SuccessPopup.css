@@ -1,4 +1,4 @@
-/* Overlay */
+
 .success-overlay {
     position: fixed;
     top: 0;
@@ -12,7 +12,6 @@
     z-index: 1000;
   }
   
-  /* Pop-up content */
   .success-content {
     background: #fff;
     padding: 30px;
@@ -36,7 +35,6 @@
     margin-bottom: 20px;
   }
   
-  /* Close button */
   .close-button {
     padding: 10px 20px;
     font-size: 16px;
@@ -52,7 +50,6 @@
     background-color: #388E3C;
   }
   
-  /* Slide-down animation */
   @keyframes slideDown {
     from { transform: translateY(-20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
