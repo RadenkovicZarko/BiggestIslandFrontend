@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './css/GameGrid.css';
+import Popup from './Popup';
 
 function GameGrid({ onGuess, restartKey }) {
   const [matrix1, setMatrix1] = useState([]);
   const [matrix2, setMatrix2] = useState([]);
   const [maxValue, setMaxValue] = useState(1000);
   const [highlightedCells, setHighlightedCells] = useState(new Set());
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState('');
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/grid`)
@@ -56,7 +59,12 @@ function GameGrid({ onGuess, restartKey }) {
     if (valueInMatrix2 === maxValue) {
       setHighlightedCells(new Set());
       onGuess(true);
-    } else {
+    } 
+    else if(valueInMatrix2==-1)
+    {
+      setPopupMessage('You already selected that island, and it does not have the highest average height among all islands.');
+      setShowPopup(true);
+    }else {
       highlightIsland(rowIndex, colIndex);
       onGuess(false);
     }
@@ -65,7 +73,7 @@ function GameGrid({ onGuess, restartKey }) {
   const highlightIsland = (startRow, startCol) => {
     const visited = new Set();
     const stack = [[startRow, startCol]];
-
+   
     while (stack.length > 0) {
       const [row, col] = stack.pop();
       const key = `${row},${col}`;
@@ -75,7 +83,7 @@ function GameGrid({ onGuess, restartKey }) {
       }
 
       visited.add(key);
-
+      matrix2[row][col] = -1;
       stack.push([row - 1, col]);
       stack.push([row + 1, col]);
       stack.push([row, col - 1]);
@@ -115,6 +123,7 @@ function GameGrid({ onGuess, restartKey }) {
 
   return (
     <div className="game-grid">
+      {showPopup && (<Popup message={popupMessage} onClose={() => setShowPopup(false)} />)}
       <h1>Island Adventure</h1>
       {matrix1.length > 0 ? renderMatrix(matrix1, handleClick) : <p>Loading Matrix 1...</p>}
     </div>

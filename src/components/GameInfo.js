@@ -22,7 +22,7 @@ function GameInfo({ lives, level, accuracy, highestLevel }) {
         </div>
         <div className="stat-item">
           <FaStar className="icon" title="Current Accuracy" />
-          <p><strong>Accuracy:</strong> {accuracy}%</p>
+          <p><strong>Accuracy:</strong> {accuracy ? accuracy : 0}%</p>
         </div>
         <div className="stat-item">
           <FaTrophy className="icon" title="Highest Level" />

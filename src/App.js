@@ -40,7 +40,6 @@ function App() {
     setLives(3);
     setLevel(1);
     setAccuracy(0);
-    setHighestLevel(1);
     setMisses(0);
     setTotalAttempts(0);
     setRestartKey((prevKey) => prevKey + 1);
